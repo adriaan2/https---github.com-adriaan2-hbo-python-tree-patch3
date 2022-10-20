@@ -49,9 +49,8 @@ def main(csv_file):
     print("\n".join(corrupt_lines))
 
 
-if __name__ == "__main__":
+if __name__ =="__main__":
     main('students.csv')
 
 
-if __name__ == "__main__":main('students.csv')
 
