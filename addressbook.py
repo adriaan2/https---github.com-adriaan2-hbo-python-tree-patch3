@@ -14,7 +14,6 @@ Create an application that manages contacts in an addressbook. The following req
 import os
 import sys
 import json
-from typing import List
 
 addressbook = []
 
@@ -49,7 +48,8 @@ add new contact:
 - phone_numbers = {}
 '''
 def add_contact():
-    ...
+    newcontact=input("")
+    
 
 
 '''
@@ -102,7 +102,8 @@ Don't forget to put the contacts.json file in the same location as this file!
 '''
 
 def main(json_file):
-      list_contacts
+    read_from_json(json_file)
+      
     
 
 '''
@@ -127,5 +128,5 @@ if __name__ == "__main__":
     elif user_choice=="mergecontact":
         merge_contacts()
     elif user_choice=="readcontract":
-        list_contacts
+         list_contacts
       

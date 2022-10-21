@@ -5,7 +5,7 @@
 
 
 def add_book():
-    bood_detail =input()
+    bood_detail= input()
     author, title, publisher, publicationdate=bood_detail.split(',')
     book = {
     'author':author,
