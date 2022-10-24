@@ -11,7 +11,10 @@ Create an application that manages contacts in an addressbook. The following req
 - Contacts are read from the provided JSON file and should be updated with new or removed contacts.
 '''
 
+import email
+import mailbox
 import os
+from readline import append_history_file
 import sys
 import json
 
@@ -48,13 +51,23 @@ add new contact:
 - phone_numbers = {}
 '''
 def add_contact():
-    newcontact=input("")
     
+    firstname=input("firstname ")    
+    lastname=input("lastname ")  
+    phone_number=input("phonenumber ")
+    mail=input("email")
+
+    newcontact={
+        
+        'first_name':firstname,
+        'last_name':lastname,
+        'phone_numbers':phone_number,
+         'emails':mail
+
+    }     
+     print(newcontact)
 
 
-'''
-remove contact by ID (integer)
-'''
 def remove_contact():
     pass
 
@@ -75,7 +88,7 @@ def read_from_json(filename):
         data = json.load(outfile)
         for contact in data:
             addressbook.append(contact)
-            print(addressbook)
+         
 
 '''
 write_to_json
@@ -120,13 +133,14 @@ Do NOT change it.
 
 if __name__ == "__main__":
     main('contacts.json')
-    user_choice=input("user_choice")
-    if user_choice=="addcontact":
+    user_choice=input("user_choice ")
+    
+    if user_choice=="a":
         add_contact()
-    elif user_choice=="deletecontact":
+    elif user_choice=="d":
         remove_contact()
-    elif user_choice=="mergecontact":
+    elif user_choice=="m":
         merge_contacts()
-    elif user_choice=="readcontract":
+    elif user_choice=="l":
          list_contacts
       
