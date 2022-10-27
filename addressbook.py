@@ -12,6 +12,7 @@ Create an application that manages contacts in an addressbook. The following req
 '''
 
 
+import email
 import os
 import sys
 import json
@@ -36,9 +37,8 @@ def display(list = []):
 return list of contacts sorted by first_name or last_name [if blank then unsorted], direction [ASC (default)/DESC])
 '''
 def list_contacts():
-    ...
-
-
+    
+  print(addressbook)
 
 '''
 add new contact:
@@ -48,23 +48,37 @@ add new contact:
 - phone_numbers = {}
 '''
 def add_contact():
-    id=input("id")
+    id=1
+    for i in addressbook:
+      id=id+1
+      print(id)
     firstname=input("firstname ")    
     lastname=input("lastname ")  
     phone_number=input("phonenumber ")
-    phonenumberdict= [phone_number]
-    mail=input("email")
+    if "," in phone_number:
+         phone1,phone2 =str.split(phone_number,",")
+         phonedict=[phone1,phone2]
+    else:
+             phonedict=[phone_number]
+
+    mail=input("email ")
+    maildict=[]
+    if "," in mail:
+        mail1,mail2=str.split(mail,",")
+        maildict[mail1,mail2]
+    else :
+        maildict=[mail]
     
     newcontact={
-       
+        'id':id,
         'first_name':firstname,
         'last_name':lastname,
-        'phone_numbers':phone_number,
-         'emails':mail
+        'phone_numbers':phonedict,
+         'emails':maildict
 
     }     
     addressbook.append(newcontact)
-    print(addressbook)
+    
 
 def remove_contact():
      
@@ -75,23 +89,24 @@ def remove_contact():
   for i in addressbook:
         if i["id"] == temp:
             addressbook.remove(i)
-            print(addressbook)
+            
 
          
 
       
 
-'''
+''''
 merge duplicates (automated > same fullname [firstname & lastname])
 '''
 def merge_contacts():
+   print(addressbook)
    for i in addressbook:
      for j in addressbook:
         if i["id"]!=j["id"]:
-          print("test")
-                  
-
-
+          if i["first_name"]==j["first_name"]:
+            if i["last_name"]==j["last_name"]:
+                i["phone_numbers"]+=j["phone_numbers"]
+                addressbook.remove(j)
 '''
 read_from_json
 Do NOT change this function
@@ -146,10 +161,10 @@ Do NOT change it.
 
 if __name__ == "__main__":
     main('contacts.json')
-    list_contacts()
+    
     
     while   True:
-        user_choice=input("user_choice ")
+        user_choice=input("[a]\n [l]\n []\n []\n []\n")
 
         if user_choice=="a":
             add_contact()
