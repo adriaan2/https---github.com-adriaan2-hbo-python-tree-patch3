@@ -11,10 +11,8 @@ Create an application that manages contacts in an addressbook. The following req
 - Contacts are read from the provided JSON file and should be updated with new or removed contacts.
 '''
 
-import email
-import mailbox
+
 import os
-from readline import append_history_file
 import sys
 import json
 
@@ -40,7 +38,6 @@ return list of contacts sorted by first_name or last_name [if blank then unsorte
 def list_contacts():
     ...
 
-    return addressbook
 
 
 '''
@@ -51,32 +48,48 @@ add new contact:
 - phone_numbers = {}
 '''
 def add_contact():
-    
+    id=input("id")
     firstname=input("firstname ")    
     lastname=input("lastname ")  
     phone_number=input("phonenumber ")
+    phonenumberdict= [phone_number]
     mail=input("email")
-
+    
     newcontact={
-        
+       
         'first_name':firstname,
         'last_name':lastname,
         'phone_numbers':phone_number,
          'emails':mail
 
     }     
-     print(newcontact)
-
+    addressbook.append(newcontact)
+    print(addressbook)
 
 def remove_contact():
-    pass
+     
+    
+    
+ 
+  temp = int(input())
+  for i in addressbook:
+        if i["id"] == temp:
+            addressbook.remove(i)
+            print(addressbook)
 
+         
+
+      
 
 '''
 merge duplicates (automated > same fullname [firstname & lastname])
 '''
 def merge_contacts():
-    ...
+   for i in addressbook:
+     for j in addressbook:
+        if i["id"]!=j["id"]:
+          print("test")
+                  
 
 
 '''
@@ -116,7 +129,7 @@ Don't forget to put the contacts.json file in the same location as this file!
 
 def main(json_file):
     read_from_json(json_file)
-      
+    write_to_json(json_file)
     
 
 '''
@@ -133,14 +146,18 @@ Do NOT change it.
 
 if __name__ == "__main__":
     main('contacts.json')
-    user_choice=input("user_choice ")
+    list_contacts()
     
-    if user_choice=="a":
-        add_contact()
-    elif user_choice=="d":
-        remove_contact()
-    elif user_choice=="m":
-        merge_contacts()
-    elif user_choice=="l":
-         list_contacts
-      
+    while   True:
+        user_choice=input("user_choice ")
+
+        if user_choice=="a":
+            add_contact()
+        elif user_choice=="d":
+            remove_contact()
+        elif user_choice=="m":
+            merge_contacts()
+        elif user_choice=="l":
+            list_contacts()
+        else:
+            break
