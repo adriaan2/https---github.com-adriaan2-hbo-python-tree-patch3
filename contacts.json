@@ -35,17 +35,5 @@
             "0612345678",
             "0201234567"
         ]
-    },
-    {
-        "id": 4,
-        "first_name": "Peter",
-        "last_name": "Parker",
-        "emails": [
-            "peter@parker.me",
-            "pparker@dailybugle.com"
-        ],
-        "phone_numbers": [
-            "0677385678"
-        ]
     }
 ]

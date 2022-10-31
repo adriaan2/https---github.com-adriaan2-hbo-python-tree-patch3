@@ -1,7 +1,7 @@
 '''
 Create an application that manages contacts in an addressbook. The following requirements should be implemented:
-- Add a contact with first name and last name (only alphabet), multiple (unique) e-mails (containing at least one '@'), 
-  multiple (unique) phone numbers (only digits). Also, an ID should be generated which should be 1 higher than the highest current ID.
+- Add a contact with first name and last name (only alphabet), multiple (unidue) e-mails (containing at least one '@'), 
+  multiple (unidue) phone numbers (only digits). Also, an ID should be generated which should be 1 higher than the highest current ID.
 - Remove a contact by ID.
 - List all contacts with the option to sort by first_name or last_name (default first_name) with a sort_by parameter 
   and in ascending (ASC) or decending (DESC) direction (default ASC) witb a direction parameter.
@@ -12,7 +12,7 @@ Create an application that manages contacts in an addressbook. The following req
 '''
 
 
-import email
+
 import os
 import sys
 import json
@@ -24,22 +24,25 @@ addressbook = []
 print all contacts in the following format:
 ======================================
 Position: <position>
-First name: <firstname>
+First name: <fname>
 Last name: <lastname>
 Emails: <email_1>, <email_2>
 Phone numbers: <number_1>, <number_2>
 '''
 def display(list = []):
-    ...
-
-
+    for i in addressbook:
+        print("<position>",i["id"])
+        print("<fname>",i["first_name"])
+        print("<lastname>",i["last_name"])
+        print("<phonenumbers>",i["phone_numbers"])
+        print("<email>",i["emails"])
+       
 '''
 return list of contacts sorted by first_name or last_name [if blank then unsorted], direction [ASC (default)/DESC])
 '''
 def list_contacts():
-    
-  print(addressbook)
-
+    pass
+  
 '''
 add new contact:
 - first_name
@@ -48,11 +51,9 @@ add new contact:
 - phone_numbers = {}
 '''
 def add_contact():
-    id=1
-    for i in addressbook:
-      id=id+1
-      print(id)
-    firstname=input("firstname ")    
+    id=len(addressbook)+1
+   
+    fname=input("fname ")    
     lastname=input("lastname ")  
     phone_number=input("phonenumber ")
     if "," in phone_number:
@@ -65,21 +66,20 @@ def add_contact():
     maildict=[]
     if "," in mail:
         mail1,mail2=str.split(mail,",")
-        maildict[mail1,mail2]
+        maildict=[mail1,mail2]
     else :
         maildict=[mail]
     
     newcontact={
         'id':id,
-        'first_name':firstname,
+        'first_name':fname,
         'last_name':lastname,
         'phone_numbers':phonedict,
          'emails':maildict
 
     }     
     addressbook.append(newcontact)
-    
-
+     
 def remove_contact():
      
     
@@ -87,7 +87,7 @@ def remove_contact():
  
   temp = int(input())
   for i in addressbook:
-        if i["id"] == temp:
+        if i["id"]==temp:
             addressbook.remove(i)
             
 
@@ -96,7 +96,7 @@ def remove_contact():
       
 
 ''''
-merge duplicates (automated > same fullname [firstname & lastname])
+merge duplicates (automated > same fullname [fname & lastname])
 '''
 def merge_contacts():
    print(addressbook)
@@ -145,7 +145,6 @@ Don't forget to put the contacts.json file in the same location as this file!
 def main(json_file):
     read_from_json(json_file)
     write_to_json(json_file)
-    
 
 '''
 calling main function: 
@@ -160,19 +159,20 @@ Do NOT change it.
 
 
 if __name__ == "__main__":
+    
     main('contacts.json')
-    
-    
     while   True:
-        user_choice=input("[a]\n [l]\n []\n []\n []\n")
+        user_choice=input("[a]add contact\n[l]list contact\n[m]merge contact\n[r]remove\n[q]quit\n").upper()
+        
 
-        if user_choice=="a":
+        if user_choice=="A":
             add_contact()
-        elif user_choice=="d":
+            
+        elif user_choice=="R":
             remove_contact()
-        elif user_choice=="m":
+        elif user_choice=="M":
             merge_contacts()
-        elif user_choice=="l":
-            list_contacts()
+        elif user_choice=="L":
+            display()
         else:
             break
