@@ -29,14 +29,14 @@ Last name: <lastname>
 Emails: <email_1>, <email_2>
 Phone numbers: <number_1>, <number_2>
 '''
-def display(list = []):
+def display():
     for i in addressbook:
-        print("<position>",i["id"])
-        print("<fname>",i["first_name"])
-        print("<lastname>",i["last_name"])
-        print("<phonenumbers>",i["phone_numbers"])
-        print("<email>",i["emails"])
-       
+        print("position",i["id"])
+        print("fname",i["first_name"])
+        print("lastname",i["last_name"])
+        print("email",i["emails"])
+        print("phonenumbers",i["phone_numbers"])
+
 '''
 return list of contacts sorted by first_name or last_name [if blank then unsorted], direction [ASC (default)/DESC])
 '''
@@ -130,41 +130,13 @@ def write_to_json(filename):
         outfile.write(json_object)
 
 
-'''
-main function:
-build menu structure as following
-the input can be case-insensitive (so E and e are valid inputs)
-[L] List contacts
-[A] Add contact
-[R] Remove contact
-[M] Merge contacts
-[Q] Quit program
-Don't forget to put the contacts.json file in the same location as this file!
-'''
+
+
 
 def main(json_file):
     read_from_json(json_file)
-    write_to_json(json_file)
-
-'''
-calling main function: 
-Do NOT change it.
-'''
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    
-    main('contacts.json')
-    while   True:
-        user_choice=input("[a]add contact\n[l]list contact\n[m]merge contact\n[r]remove\n[q]quit\n").upper()
-        
-
+    while True:
+        user_choice=input("[L]list contact\n[A]add contact\n[M]merge contact\n[R]remove\n[Q]quit\n").upper()
         if user_choice=="A":
             add_contact()
             
@@ -174,5 +146,12 @@ if __name__ == "__main__":
             merge_contacts()
         elif user_choice=="L":
             display()
-        else:
+        elif user_choice=="Q":
+            write_to_json(json_file)
+            print("close program")
             break
+        
+        
+    
+if __name__ == "__main__":
+          main('contacts.json')
