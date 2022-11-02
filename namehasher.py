@@ -43,12 +43,12 @@ To test your functions, use the provided unit test file.
 hashmap_key_value = {}
 encoded_values = []
 decoded_values = []
-string="a_b?c9d6e1f4g!h:i<j|k{l0m@n7o+p~q2r+s/t=u^v3w]x(y-z>A*B8C;D%E#F}G5H)I[J$"
 # create a function that given the input string converts it to the encoded equivalent based on the provided or already set key/hashmap
 # make sure to only convert values that are in the key/hashmap, if the value is not present, use its own value
 def encode_string(data: str, key: str = None) -> str:
     password=input("test")
-          
+    set_hashmap(password)
+    print(hashmap_key_value)
 
 
 
@@ -62,7 +62,7 @@ def decode_string(data: str, key: str = None) -> str:
 # tip! make use of the map function within python with a lambda to call the internal function with all elements
 # as a return value, you should return a list with Tuples containing the decoded value as first value and the encode value as second value
 def encode_list(data: list, key: str = None) -> list:
-     password=input("test")
+     password=input()
      set_hashmap(password)
 
 # create a function that given a list of inputs converts the complete list to the encoded equivalent based on the key/hashmap
@@ -79,29 +79,12 @@ def validate_values(encoded: str, decoded: str, key: str = None) -> bool:
 
 
 def set_hashmap(key: str) -> None:
-    # hasmap is converting the string into a list
-    Hashmap = list(string)
+  i=0 
+  while i>len(key):
+    hashmap_key_value.update({key[i]:key[i+1]})
     
-    keys = []
-    values = []
-    i = 0
-    #
-    while (i < len(Hashmap)):
-        if i % 2 == 0:
-            keys.append(Hashmap[i])
-        else:
-            values.append(Hashmap[i])
-            i += 1
-    
-    Hashdict = dict()
-    j = 0
-    while j < len(keys):
-        if (j < len(values)):
-            Hashdict.update({keys[j]: values[j]})
-        else:
-            Hashdict.update({keys[j]: None})
-        j += 1
-        
+  i+=2
+  print(i)
     
 # build menu structure as following
 # the input can be case-insensitive (so E and e are valid inputs)
@@ -122,7 +105,7 @@ def main():
 
         if answer == "E":
 
-            encode_string()
+            encode_string(hashmap_key_value)
 
         elif answer == "D":
 
@@ -142,4 +125,4 @@ def main():
             stop = True
 
 if __name__ == "__main__":
-    set_hashmap("abc")
+     main()
