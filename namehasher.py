@@ -47,42 +47,23 @@ string="a_b?c9d6e1f4g!h:i<j|k{l0m@n7o+p~q2r+s/t=u^v3w]x(y-z>A*B8C;D%E#F}G5H)I[J$
 # create a function that given the input string converts it to the encoded equivalent based on the provided or already set key/hashmap
 # make sure to only convert values that are in the key/hashmap, if the value is not present, use its own value
 def encode_string(data: str, key: str = None) -> str:
-    Hashmap = list(string)
-    print(Hashmap)
-    keys = []
-    values = []
-    i = 0
-    while (i < len(Hashmap)):
-        if i % 2 == 0:
-            keys.append(Hashmap[i])
-        else:
-            values.append(Hashmap[i])
-            i += 1
-    print(keys)
-    print(values)
-    Hashdict = dict()
-    j = 0
-    while j < len(keys):
-        if (j < len(values)):
-            Hashdict.update({keys[j]: values[j]})
-        else:
-            Hashdict.update({keys[j]: None})
-            j += 1
-[           
+    password=input("test")
+          
 
 
 
 # create a function that given the input string converts it to the decoded equivalent based on the provided or already set key/hashmap
 # make sure to only decode values that are in the key/hashmap, if the value is not present, use its own value
 def decode_string(data: str, key: str = None) -> str:
- pass
+     pass
 
 # create a function that given a list of inputs converts the complete list to the encoded equivalent based on the key/hashmap
 # you can use the already created encode function when looping through the list
 # tip! make use of the map function within python with a lambda to call the internal function with all elements
 # as a return value, you should return a list with Tuples containing the decoded value as first value and the encode value as second value
 def encode_list(data: list, key: str = None) -> list:
-     encode_list()
+     password=input("test")
+     set_hashmap(password)
 
 # create a function that given a list of inputs converts the complete list to the encoded equivalent based on the key/hashmap
 # you can use the already created decode function when looping through the list
@@ -98,8 +79,30 @@ def validate_values(encoded: str, decoded: str, key: str = None) -> bool:
 
 
 def set_hashmap(key: str) -> None:
-  pass
-
+    # hasmap is converting the string into a list
+    Hashmap = list(string)
+    
+    keys = []
+    values = []
+    i = 0
+    #
+    while (i < len(Hashmap)):
+        if i % 2 == 0:
+            keys.append(Hashmap[i])
+        else:
+            values.append(Hashmap[i])
+            i += 1
+    
+    Hashdict = dict()
+    j = 0
+    while j < len(keys):
+        if (j < len(values)):
+            Hashdict.update({keys[j]: values[j]})
+        else:
+            Hashdict.update({keys[j]: None})
+        j += 1
+        
+    
 # build menu structure as following
 # the input can be case-insensitive (so E and e are valid inputs)
 # [E] Encode value to hashed value
@@ -109,8 +112,8 @@ def set_hashmap(key: str) -> None:
 # [Q] Quit program
 
 def main():
- stop = False
- while not stop:
+    stop = False
+    while not stop:
         print("""[E] Encode value to hashed value[D] Decode hashed value to normal value[P] Print all encoded/decoded values[V] Vaidate 2 values against eachother[Q] Quit program""")
 
         answer = input("What do you want to do? ").upper()
@@ -127,9 +130,8 @@ def main():
 
         elif answer == "P":
 
-            id = int(input())
-
-            remove_contact(id)
+            pass
+           
 
         elif answer == "V":
 
@@ -138,3 +140,6 @@ def main():
         elif answer == "Q":
             print("quiting program...")
             stop = True
+
+if __name__ == "__main__":
+    set_hashmap("abc")
