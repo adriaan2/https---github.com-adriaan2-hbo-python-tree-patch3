@@ -154,4 +154,4 @@ def main(json_file):
         
     
 if __name__ == "__main__":
-          main('contacts.json')
+    main('contacts.json')
