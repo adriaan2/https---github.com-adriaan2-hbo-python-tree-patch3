@@ -1,3 +1,5 @@
+
+
 '''
 Create a progam that can convert a name/string to the hashed representation of that value
 
@@ -39,28 +41,63 @@ a_b?c9d6e1f4g!h:i<j|k{l0m@n7o+p~q2r+s/t=u^v3w]x(y-z>A*B8C;D%E#F}G5H)I[J$
 
 To test your functions, use the provided unit test file.
 '''
-string="a_b?c9d6e1f4g!h:i<j|k{l0m@n7o+p~q2r+s/t=u^v3w]x(y-z>A*B8C;D%E#F}G5H)I[J$"
+dk="a_b?c9d6e1f4g!h:i<j|k{l0m@n7o+p~q2r+s/t=u^v3w]x(y-z>A*B8C;D%E#F}G5H)I[J$"
 hashmap_key_value = {}
 encoded_values = []
 decoded_values = []
 # create a function that given the input string converts it to the encoded equivalent based on the provided or already set key/hashmap
 # make sure to only convert values that are in the key/hashmap, if the value is not present, use its own value
 def encode_string(data: str, key: str = None) -> str:
-    set_hashmap(string)
-    print("test")
+            
+    mystring = input('Enter String to hash: ')
+    if "," in mystring:
+        encode_list(mystring,dk)
+        
+        
+    else:
+        list_name = []
+        i=0
+        a=0
+        print(type(mystring))
+        newstring = list(mystring)
+
+        for char in mystring:
+            if char == newstring[a]:
+                position = dk.find(newstring[a])
+                a+=1
+                position -=1
+
+            
+        list_name.append({mystring[i]:dk[position]})
+        decoded_values.append(dk[position])
+        i += 1
+        
+        
+       
+        print(decoded_values)
+
+
 
 
 # create a function that given the input string converts it to the decoded equivalent based on the provided or already set key/hashmap
 # make sure to only decode values that are in the key/hashmap, if the value is not present, use its own value
 def decode_string(data: str, key: str = None) -> str:
-     pass
+   
+    print("test")
+ #string = ', '.join(key + value for key, value in hashmap_key_value.items())
+# print(type(string))
+ #print(f"Converted string: {string}")
+    mystring=input('Enter String to hash: ')
+ # Assumes the default UTF-8
+
+
 
 # create a function that given a list of inputs converts the complete list to the encoded equivalent based on the key/hashmap
 # you can use the already created encode function when looping through the list
 # tip! make use of the map function within python with a lambda to call the internal function with all elements
 # as a return value, you should return a list with Tuples containing the decoded value as first value and the encode value as second value
 def encode_list(data: list, key: str = None) -> list:
-       pass
+       print("TEST")
 # create a function that given a list of inputs converts the complete list to the encoded equivalent based on the key/hashmap
 # you can use the already created decode function when looping through the list
 # tip! make use of the map function within python with a lambda to call the internal function with all elements
@@ -75,11 +112,12 @@ def validate_values(encoded: str, decoded: str, key: str = None) -> bool:
 
 
 def set_hashmap(key: str) -> None:
+  print(key)
   i=0 
-  while i>len(key):
+  while i<len(key):
     hashmap_key_value.update({key[i]:key[i+1]})
-    print(hashmap_key_value)
-  i+=2
+    i+=2
+  print(hashmap_key_value)
     
 # build menu structure as following
 # the input can be case-insensitive (so E and e are valid inputs)
@@ -89,35 +127,45 @@ def set_hashmap(key: str) -> None:
 # [V] Validate 2 values against eachother
 # [Q] Quit program
 
-def main():
-    stop = False
-    while not stop:
-        print("""[E] Encode value to hashed value[D] Decode hashed value to normal value[P] Print all encoded/decoded values[V] Vaidate 2 values against eachother[Q] Quit program""")
+# def main():
+#     stop = False
+#     while not stop:
+#         print("""[E] Encode value to hashed value[D] Decode hashed value to normal value[P] Print all encoded/decoded values[V] Vaidate 2 values against eachother[Q] Quit program""")
 
-        answer = input("What do you want to do? ").upper()
+#         answer = input("What do you want to do? ").upper()
 
-        # print("test")
+#         # print("test")
 
-        if answer == "E":
+#         if answer == "E":
 
-            encode_string(hashmap_key_value)
+#             encode_string(hashmap_key_value)
 
-        elif answer == "D":
+#         elif answer == "D":
 
-            decode_string()
+#             decode_string()
 
-        elif answer == "P":
+#         elif answer == "P":
 
-            pass
+#             pass
            
 
-        elif answer == "V":
+#         elif answer == "V":
 
-            validate_values()
+#             validate_values()
 
-        elif answer == "Q":
-            print("quiting program...")
-            stop = True
+#         elif answer == "Q":
+#             print("quiting program...")
+#             stop = True
 
 if __name__ == "__main__":
-     main()
+     # step 1 checking the code in 
+    x=False
+    while  not x:
+        key=input("an even number of letters ")
+        if len(key)%2==0:
+            x=True
+    set_hashmap(key)
+   
+    #main()
+
+    

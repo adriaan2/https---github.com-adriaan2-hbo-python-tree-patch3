@@ -31,11 +31,11 @@ Phone numbers: <number_1>, <number_2>
 '''
 def display():
     for i in addressbook:
-        print("position",i["id"])
-        print("fname",i["first_name"])
-        print("lastname",i["last_name"])
-        print("email",i["emails"])
-        print("phonenumbers",i["phone_numbers"])
+        print("Position",i["id"])
+        print("First name",i["first_name"])
+        print("Last name",i["last_name"])
+        print("Email",i["emails"])
+        print("Phone numbers",i["phone_numbers"])
 
 '''
 return list of contacts sorted by first_name or last_name [if blank then unsorted], direction [ASC (default)/DESC])
@@ -135,8 +135,9 @@ def write_to_json(filename):
 
 def main(json_file):
     read_from_json(json_file)
+    x=False
     while True:
-        user_choice=input("[L]list contact\n[A]add contact\n[M]merge contact\n[R]remove\n[Q]quit\n").upper()
+        user_choice=input("[L]list contact\n[A]add contact\n[R]remove contact\n[m]Merge contact\n[Q]quit\n").upper()
         if user_choice=="A":
             add_contact()
             
