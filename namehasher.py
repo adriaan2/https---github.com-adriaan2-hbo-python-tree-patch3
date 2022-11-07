@@ -19,7 +19,7 @@ as a return value, you should return a list with the converted values
 
 create a function that given a encoded value, decoded value and a key/hashmap (optional) checks if the values are correct
 the return value should be a boolean value (True if values match, False if they don't match)
-- validate_values(encoded: str, decoded: str, key: str = None) -> bool:
+- validate_values(encoded: str,decoded: str, key: str = None) -> bool:
 
 create a function that given a key, converts to a key_hashmap (Dict) to be used for converting
 * each oneven character is the Key of the Dict, each even character is the coresponding Value
