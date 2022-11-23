@@ -1,6 +1,16 @@
-
-class car:
+class test():
     def __init__(self):
-       Brand=input("")
+       self.x=6
+
+
+class car(test):
+    def __init__(self):
+        super().__init__()
+        
+    def test(self):
+        self.y=self.x*2
+        print(self.y)
+car_a=car()
+car_a.test()
 
 
