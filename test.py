@@ -1,39 +1,7 @@
-hashmap_key_value={}
+# l = lambda x:x-5
+# print(l(6))
+# l2=lambda x,y: x+y
+# print(l2(6,7))
 
-x=False
-while  not x:
-   key=input("an even number of letters")
-   if len(key)%2==0:
-    x=True
-
-i=0 
-while i<len(key):
-    hashmap_key_value.update({key[i]:key[i+1]})
-    i+=2
-test=""
-for i in hashmap_key_value:
-  test+=hashmap_key_value[i]
-print(test)
-
-def encode_string(data: str, key: str = None) -> str:
-
-  
- pass
-  # if key == None:
-  #    key=test  
-  # res = ""
-  # for i in data:
-  #   temp = key.index(i)
-  #   res += key[temp+1]
-  # return res
-
-#encode_string(test)
-
-def decode_string(data: str, key: str = None) -> str:
-  if key == None:
-     pass
-  res = "test"
-  for i in data:
-    temp = key.index(i)
-    res += key[temp-1]
-  return res
+l=lambda x,y,z,a,b,c:x+(y-z)*a-b-c
+print(l(20,2,3,4,5,6))
