@@ -43,7 +43,7 @@ class ParkedCar:
         
  
 class CarParkingMachine:
-        def __init__(self, capacity=9,hourly_rate=2.50) -> None:
+        def __init__(self, capacity=10,hourly_rate=2.50) -> None:
             self.capacity=capacity
             self.license_plate=license
             
@@ -53,12 +53,10 @@ class CarParkingMachine:
 
             print(len(self.parked_cars))   
             if len(self.parked_cars)>=self.capacity:
-                print("capacity reached ")
 
                 return False 
 
             else :
-                print("license registered " )
                 self.checkintime=checkintime
                 self.parked_cars[licenses]=ParkedCar(licenses,checkintime)
                 return True
@@ -117,8 +115,12 @@ def main():
         yourchoice=input("[Q]  quit program ").lower()
         if yourchoice=="i":
             licenseplate=input("license plate ")
-            test.check_in(licenseplate)
-         
+            if len(test.parked_cars)<=test.capacity:
+                print("license registered")
+                test.check_in(licenseplate)
+
+            else: 
+                print("capacity reached")
           
              
         elif yourchoice=="o":
